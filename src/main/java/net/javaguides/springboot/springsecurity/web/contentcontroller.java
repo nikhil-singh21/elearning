@@ -150,10 +150,10 @@ public class contentcontroller {
 		        	
 		        }
 		        
-		    	if(course.getCourse_name().equals(""))
-		    	{
-		    		result.rejectValue("Course_name", null, "Enter the Course name");
-		    	}
+				
+				  if(course.getCourse_name().equals("")) { result.rejectValue("Course_name",
+				  null, "Enter the Course name"); }
+				 
 		    	if(course.getDescription().equals(""))
 		    	{
 		    		result.rejectValue("Description", null, "Enter the Course name");

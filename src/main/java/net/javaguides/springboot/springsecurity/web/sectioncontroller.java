@@ -161,7 +161,7 @@ public class sectioncontroller {
 	    	System.out.println(course.getCourse_id());
 	    	System.out.println(course.getUser_id());
 	    	sectionService.savecourse(course);
-	        return "redirect:/trainer/cresult";
+	        return "trainer/CourseRegisterResult";
 	    }
 	
 }

@@ -293,7 +293,7 @@
   </div> 
 </div> 
 <div class="text-center" >
-    <a class="btn btn-danger mx-1" href="courselanding.html" ><i class="fas fa-hand-point-left" style="padding: 3px;" ></i>Goto Courses</a>
+    <a class="btn btn-danger mx-1" th:href="@{/}" ><i class="fas fa-hand-point-left" style="padding: 3px;" ></i>Logout</a>
 </div>
 </a>
 </li>
@@ -417,7 +417,7 @@
                                                     <a href="#" data-toggle="collapse" class="collapsed" th:data-target="'#'+${contentlist.section_name}" aria-expanded="true" aria-controls="${contentlist.section_name}">
                                                         <ul>
                                                             <li><i class="fa fa-file-o"></i></li>
-                                                            <li><span class="lecture">Lecture 1.1</span></li>
+                                                            <li><span class="lecture">Section 1.1</span></li>
                                                             <li><span class="head" th:text="${contentlist.section_name}" ></span></li>
                                                             
                                                             <li><span class="time d-none d-md-block"><i class="fa fa-clock-o"></i> <h6> 00.30.00</h6></span></li>

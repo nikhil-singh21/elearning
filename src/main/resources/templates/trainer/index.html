@@ -113,7 +113,7 @@
                                  <div class="product-content" style="height: auto">
                                      <h3 class="title"><h5 class="card-title" th:text="${courselist.Course_name}"></h5>
                                      <p class="card-text"th:text="${courselist.description}"></p>
-                                     <a th:href="@{'/content/' + ${courselist.course_id}+'/a/'+${courselist.user_id} }" class="btn btn-primary" >Add content</a>
+                                     <!-- <a th:href="@{'/content/' + ${courselist.course_id}+'/a/'+${courselist.user_id} }" class="btn btn-primary" >Add content</a> -->
     								<a th:href="@{/trainer/section(param1=${courselist.course_id},param2=${courselist.user_id})}" class="btn btn-primary" >Open course</a>
                                      
                                  </div>
@@ -151,7 +151,7 @@
                                  <div class="product-content" style="height: auto">
                                      <h3 class="title"><h5 class="card-title" th:text="${courselist1.Course_name}"></h5>
                                      <p class="card-text"th:text="${courselist1.description}"></p>
-                                     <a th:href="@{'/content/' + ${courselist1.course_id}+'/a/'+${courselist1.user_id} }" class="btn btn-primary" >Add content</a>
+                                     <!-- <a th:href="@{'/content/' + ${courselist1.course_id}+'/a/'+${courselist1.user_id} }" class="btn btn-primary" >Add content</a> -->
     								<a th:href="@{/trainer/section(param1=${courselist1.course_id},param2=${courselist1.user_id})}" class="btn btn-primary" >Open course</a>
                                      
                                  </div>
