@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!--  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+
+    <title>Registration</title>
+</head> -->
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+     <!-- Font Awesome -->
+     <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+       <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,600}">
+		<link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.0.6/css/all.css}">
+       <link rel="stylesheet" th:href="@{fonts_footer/icomoon/style.css}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" th:href="@{../index/css_footer/bootstrap.min.css}">
+    
+    <!-- Style CSS -->
+    <link rel="stylesheet" th:href="@{../index/css_footer/style.css}">
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=STIX+Two+Math&family=Staatliches&display=swap');
+
+        .logo img{
+	width: 170px;
+	cursor: pointer;
+	transition: all 1s;
+	}
+</style>
+
+
+<!-- <style>
+
+.modal {
+  background: transparent;
+  position: absolute;
+  float: center;
+  
+  left: center;
+  top: center;
+  
+} 
+    </style> -->
+     <!-- custom stylesheet -->
+    
+    <title>Courses</title>
+
+    <!--====== Required meta tags ======-->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!--====== Title ======-->
+   
+   
+
+    <!--====== Magnific Popup css ======-->
+    <link rel="stylesheet" th:href="@{../index/course_info_assests/css/magnific-popup.css}">
+
+    <!--====== Bootstrap css ======-->
+    <link rel="stylesheet" th:href="@{../index/course_info_assests/css/bootstrap.min.css}">
+    
+    <!--====== Fontawesome css ======-->
+    <link rel="stylesheet" th:href="@{../index/course_info_assests/css/font-awesome.min.css}">
+    
+    <!--====== Default css ======-->
+    <link rel="stylesheet" th:href="@{../index/course_info_assests/css/default.css}">
+    
+    <!--====== Style css ======-->
+    <link rel="stylesheet" th:href="@{../index/course_info_assests/css/style.css}">
+    
+    <!--====== Responsive css ======-->
+
+  
+</head>
+<!-- 
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+     <span class="sr-only">Toggle navigation</span> <span
+      class="icon-bar"></span> <span class="icon-bar"></span> <span
+      class="icon-bar"></span>
+    </button>
+                <a class="navbar-brand" href="#" th:href="@{/}">Registration and
+     Login Module</a>
+            </div>
+        </div>
+    </nav>
+
+    <br>
+    <br>
+    
+     <div class="panel panel-default container">
+  	<div class="panel-body">published courses</div>
+  	<table>
+  	<tbody>
+  	
+  					<tr>	
+  				<td th:each="courselist: ${contentlist}">
+  						
+  						<div class="card" style="width: 18rem;">
+  							<img class="card-img-top" src="" alt="Card image cap">
+  						<div class="card-body">
+    					
+    					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    					<a href="#" class="btn btn-primary">Go somewhere</a>
+    					<a th:href="@{/trainer/content(param1=${courselist.section_id},param2=${courselist.user_id})}" class="btn btn-primary" >Delete</a>
+  						</div>
+						</div>
+					</td>
+				</tr>
+	</tbody>
+	</table>
+  	<div>
+  
+  </div>
+</div>
+    
+    
+    
+    
+    
+    
+    
+    
+    <h5 class="card-title" th:text="${msg}" >Card title</h5>
+    
+    <a th:href="@{/trainer/addsection(param1=${cid},param2=${uid})}" class="btn btn-primary" >Delete</a>
+
+    <div class="panel panel-default container" style="padding-top:100px;">
+    
+
+    
+    
+<form action="/">
+  <fieldset>
+    <legend>Personal:</legend>
+    <label for="fname">First name:</label><br>
+    <input type="text" id="fname" name="fname" value="John"><br>
+    <label for="lname">Last name:</label><br>
+    <input type="text" id="lname" name="lname" value="Doe"><br><br>
+    <input type="submit" value="Submit">
+  </fieldset>
+</form>
+<h5 class="card-title" th:text="${cid}">Card title</h5>
+</div>
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+</body>
+ -->
+ <body class="bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+
+  <button class="navbar-toggler navbar-toggler-icon" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+    
+
+  </button>
+     <div class="logo"><img src="../learnit_logo.png" alt="logo"></div>
+       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto container-fluid">
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-list-ul"></i>
+                        Categories
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+
+                <li class="nav-item" style="align-content: center;">
+                    <div class="text-center" >
+                     <li class="nav-item col-8">
+                    <form class="form-inline my-2 my-lg-0">
+                      <!--  <input class="form-control form-control-lg col-9 bg-light border-0 rounded-radius-left " type="search" placeholder="Search for Courses" aria-label="Search">
+                        <button class="btn btn-lg btn-light col-2 my-2 my-sm-0 ml-0 rounded-radius-right" type="submit"><i class="fa fa-search" ></i></button>-->
+                    </form>
+                </li>
+                </div>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+
+
+<li class="nav-item " style="padding: 10px">
+    <div class="text-center" >
+           <!-- <a class="btn btn-light mx-2" href="login2.html" data-toggle="popover" data-trigger="focus" data-content="Get your team access to LearnIt's top 2,500 courses anytime, anywhere" title="Try LearnIt for Business" data-placement="bottom" href="#">LearnIt for Business</a>-->
+        </div>
+        </li>
+
+        <li class="nav-item" style="padding: 10px">
+            <div class="text-center" >
+          <!--  <a class="btn btn-light mx-2" href="become_an_instructor.html">Become an Instructor</a>-->
+        </div>
+            </li>
+
+            <li class="nav-item" style="padding: 10px"> 
+
+<a>
+    <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+          <div class="uppercontainer" role="document">
+
+        <div class="form-box">
+
+            <div class="button-box">
+                <div id="btn" ></div>
+                <button type="button" class="toggle-btn" onclick="login()">Sign In</button>
+            <button type="button" class="toggle-btn" onclick="register()">Sign Up</button>
+        </div>
+
+        <div class="social-icons">
+            <img src="./images/fb.png">
+            <img src="./images/tw.png">
+            <img src="./images/gp.png">
+        </div>
+        <form id="login" class="input-group">
+            <input type="text" class="input-field" placeholder="User Id" required><br> <br>
+            <input type="password" class="input-field" placeholder="Enter Password" required>
+            <br><br>
+            <input type="checkbox" class="chech-box"><h6>Remember Password</h6>
+           
+            <button type="submit" class="submit-btn">Log in</button>
+        </form>
+        <form id="register" class="input-group">
+            <input type="text" class="input-field" placeholder="Enter Your Name" required>
+            <input type="text" class="input-field" placeholder="Create User Id" required>
+            <input type="date" class="input-field" placeholder="Course Start Date " required>
+            <input type="email" class="input-field" placeholder="Email Id" required>
+            <input type="password" class="input-field" placeholder="Enter Password" required>
+            <input type="checkbox" class="chech-box"><h6>I agree to the terms & conditions</h6>
+            <button type="submit" class="submit-btn">Register</button>
+        </form>
+    </div>
+        </div> 
+    <div class="modal-dialog" role="document">
+
+          <div class="modal-content">
+
+
+             <div class="form-box">
+            <div class="button-box">
+                <div id="btn"></div>
+                <button type="button" class="toggle-btn" onclick="login()">Sign In</button>
+                <button type="button" class="toggle-btn" onclick="register()">Sign Up</button>
+                </div>  
+            </div>
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</h6>
+                    </button>
+             </div>
+
+              <div class="modal-body mx-3">
+                <div class="md-form mb-5">
+                    <i class="fas fa-envelope prefix grey-text"></i>
+                    <input type="email" id="defaultForm-email" class="form-control validate">
+                    <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
+                </div>
+
+                <div class="md-form mb-4">
+                    <i class="fas fa-lock prefix grey-text"></i>
+                    <input type="password" id="defaultForm-pass" class="form-control validate">
+                    <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
+                </div>
+               </div>
+               <div class="modal-footer d-flex justify-content-center">
+                    <button class="btn btn-default">Login</button>
+                </div>
+            </div>
+
+  </div> 
+</div> 
+<div class="text-center" >
+    <a class="btn btn-danger mx-1" href="courselanding.html" ><i class="fas fa-hand-point-left" style="padding: 3px;" ></i>Goto Courses</a>
+</div>
+</a>
+</li>
+</ul>
+            <!-- <a class="btn btn-danger mx-1" href="login.html">Sign In/Up</a>-->
+        </div>
+    </nav>
+    
+    <section id="page-banner" class="pt-105 pb-110 bg_cover" data-overlay="8" style="background-image: url(images/page-banner-2.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="page-banner-cont">
+                        <h2>Course Name</h2>
+                    </div>  <!-- page banner cont -->
+                </div>
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </section>
+    
+    <!--====== PAGE BANNER PART ENDS ======-->
+    
+    <!--====== COURSES SINGEl PART START ======-->
+    
+    <section id="corses-singel" class="pt-90 pb-120 gray-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="corses-singel-left mt-30">
+                        <div class="title">
+                            <h3>Learn basis <strong ></strong> from start for beginner</h3>
+                        </div> <!-- title -->
+                        <div class="course-terms">
+                            <ul>
+                                <li>
+                                    <div class="teacher-name">
+                                        <div class="thum">
+                                            <img src="../index/course_info_assests/images/course/teacher/t-1.jpg" alt="Teacher">
+                                        </div>
+                                        <div class="name">
+                                            <h6>Teacher</h6>
+                                            <h6><i>Teacher name</i></h6>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="course-category">
+                                        <h6>Category</h6>
+                                        <h6>category name</h6>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="review">
+                                        <h6>Review</h6>
+                                        <ul>
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li class="rating">(20 Reviews)</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div> <!-- course terms -->
+                        
+                        <div class="corses-singel-image pt-50">
+                            <img src="../index/course_info_assests/images/course/cu-1.jpg" alt="Courses">
+                        </div> <!-- corses singel image -->
+                        
+                        <div class="corses-tab mt-30">
+                            <ul class="nav nav-justified" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="active" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Overview</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a id="curriculam-tab" data-toggle="tab" href="#curriculam" role="tab" aria-controls="curriculam" aria-selected="false">Curriculam</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a id="instructor-tab" data-toggle="tab" href="#instructor" role="tab" aria-controls="instructor" aria-selected="false">Instructor</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a id="reviews-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Reviews</a>
+                                </li>
+                            </ul>
+                            
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+                                    <div class="overview-description">
+                                        <div class="singel-description pt-40">
+                                            <h6>Course Summery</h6>
+                                            <p>Whether you’re creating courses for a corporate library or to sell online, it’s critical to provide an accurate course outline and description. It’s all too easy to fall into the trap of writing dry course descriptions that ‘tick all the boxes.’ But if you want to captivate, create excitement and curiosity, and ultimately make students want to take or purchase your courses, you’ll need to write a course description that leaves your prospects eager to sign up.</p>
+                                        </div>
+                                        <div class="singel-description pt-40">
+                                            <h6>Requrements</h6>
+                                            <p>Whether you’re creating courses for a corporate library or to sell online, it’s critical to provide an accurate course outline and description. It’s all too easy to fall into the trap of writing dry course descriptions that ‘tick all the boxes.’ But if you want to captivate, create excitement and curiosity, and ultimately make students want to take or purchase your courses, you’ll need to write a course description that leaves your prospects eager to sign up.</p>
+                                        </div>
+                                    </div> <!-- overview description -->
+                                </div>
+                                
+                                <div class="tab-pane fade" id="curriculam" role="tabpanel" aria-labelledby="curriculam-tab">
+                                    <div class="curriculam-cont">
+                                        <div class="title">
+                                            <h6>Learn basis javascirpt Lecture Started</h6>
+                                        </div>
+                                        
+                                         <div class="error" th:if="${id== uid}"  >
+                                        <a th:href="@{/trainer/addsection(param1=${cid},param2=${uid})}" class="btn btn-primary" >ADD section</a>
+                                        </div>
+                                        
+                                        <div class="accordion" id="accordionExample">
+                                        <th:block >
+                                        
+                                            <div class="card" th:each="contentlist: ${contentlist}">
+                                                <div class="card-header" th:id="${contentlist.section_name}+'a'">
+                                                <ul>
+                                                 <!--  <li><a th:href="@{/trainer/addsection(param1=${cid},param2=${uid})}" >Delete</a></li> -->
+                                                 
+                                                 </ul>
+                                                    <a href="#" data-toggle="collapse" class="collapsed" th:data-target="'#'+${contentlist.section_name}" aria-expanded="true" aria-controls="${contentlist.section_name}">
+                                                        <ul>
+                                                            <li><i class="fa fa-file-o"></i></li>
+                                                            <li><span class="lecture">Lecture 1.1</span></li>
+                                                            <li><span class="head" th:text="${contentlist.section_name}" ></span></li>
+                                                            
+                                                            <li><span class="time d-none d-md-block"><i class="fa fa-clock-o"></i> <h6> 00.30.00</h6></span></li>
+                                                            
+                                                        </ul>
+                                                    </a>
+                                                    
+                                                </div>
+                                                
+												
+                                                <div th:id="${contentlist.section_name}" class="collapse" th:aria-labelledby="${contentlist.section_name}+'a'" data-parent="#accordionExample">
+                                                    <div class="card-body">
+                                                    <div:block class="error" th:if="${id == uid}">
+                                                    <a th:href="@{/trainer/addcontent(param1=${contentlist.section_id},param2=${uid})}" class="btn btn-primary" >Add Content</a>
+                                                    </div:block>
+                                                            <th:block th:each="content: ${content}">
+            															<div class="error" th:if="${contentlist.section_id == content.section_id}" >
+            															<a th:href="@{/trainer/vedio(param1=${content.content_id},param2=${content.user_id})}"  th:text="${content.Content_name}"></a>                      
+																		</div>
+            												</th:block>
+                                                    </div>
+                                                    
+                                                </div>
+                                            
+                                            </div>
+                                          </th:block>
+                                       
+                                        </div>
+                                    </div> <!-- curriculam cont -->
+                                </div>
+                                <div class="tab-pane fade" id="instructor" role="tabpanel" aria-labelledby="instructor-tab">
+                                    <div class="instructor-cont">
+                                        <div class="instructor-author">
+                                            <div class="author-thum">
+                                                <img th:src="@{../index/course_info_assests/images/instructor/i-1.jpg}" alt="Instructor">
+                                            </div>
+                                            <div class="author-name">
+                                                <a href="#"><h5>Trainer Name</h5></a>
+                                                <h6>Designation</h6>
+                                                <ul class="social">
+                                                    <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="instructor-description pt-25">
+                                            <p>The role of a trainer is to develop a competency and skill sets in an individual to perform his/her effectively and efficiently in the work place. The trainer should communicate to the trainees about what is expected out of training in a simple and professional way.</p>
+                                        </div>
+                                    </div> <!-- instructor cont -->
+                                </div>
+                                <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                                    <div class="reviews-cont">
+                                        <div class="title">
+                                            <h6>Student Reviews</h6>
+                                        </div>
+                                        <ul>
+                                           <li>
+                                               <div class="singel-reviews">
+                                                    <div class="reviews-author">
+                                                        <div class="author-thum">
+                                                            <img th:src="@{../index/course_info_assests/images/review/r-1.jpg}" alt="Reviews">
+                                                        </div>
+                                                        <div class="author-name">
+                                                            <h6>Bobby Aktar</h6>
+                                                            <h6>April 03, 2019</h6>
+                                                        </div>
+                                                    </div>
+                                                    <div class="reviews-description pt-20">
+                                                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which.</p>
+                                                        <div class="rating">
+                                                            <ul>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                            </ul>
+                                                            <h6>/ 5 Star</h6>
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- singel reviews -->
+                                           </li>
+                                           <li>
+                                               <div class="singel-reviews">
+                                                    <div class="reviews-author">
+                                                        <div class="author-thum">
+                                                            <img th:src="@{../index/course_info_assests/images/review/r-2.jpg}" alt="Reviews">
+                                                        </div>
+                                                        <div class="author-name">
+                                                            <h6>Humayun Ahmed</h6>
+                                                            <h6>April 13, 2019</h6>
+                                                        </div>
+                                                    </div>
+                                                    <div class="reviews-description pt-20">
+                                                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which.</p>
+                                                        <div class="rating">
+                                                            <ul>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                            </ul>
+                                                            <h6>/ 5 Star</h6>
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- singel reviews -->
+                                           </li>
+                                           <li>
+                                               <div class="singel-reviews">
+                                                    <div class="reviews-author">
+                                                        <div class="author-thum">
+                                                            <img th:src="@{course_info_assests/images/review/r-3.jpg}" alt="Reviews">
+                                                        </div>
+                                                        <div class="author-name">
+                                                            <h6>Tania Aktar</h6>
+                                                            <h6>April 20, 2019</h6>
+                                                        </div>
+                                                    </div>
+                                                    <div class="reviews-description pt-20">
+                                                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which.</p>
+                                                        <div class="rating">
+                                                            <ul>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                            </ul>
+                                                            <h6>/ 5 Star</h6>
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- singel reviews -->
+                                           </li>
+                                        </ul>
+                                        <div class="title pt-15">
+                                            <h6>Leave A Comment</h6>
+                                        </div>
+                                        <div class="reviews-form">
+                                            <form action="#">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-singel">
+                                                            <input type="text" placeholder="Fast name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-singel">
+                                                            <input type="text" placeholder="Last Name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="form-singel">
+                                                            <div class="rate-wrapper">
+                                                                <div class="rate-label">Your Rating:</div>
+                                                                <div class="rate">
+                                                                    <div class="rate-item"><i class="fa fa-star" aria-hidden="true"></i></div>
+                                                                    <div class="rate-item"><i class="fa fa-star" aria-hidden="true"></i></div>
+                                                                    <div class="rate-item"><i class="fa fa-star" aria-hidden="true"></i></div>
+                                                                    <div class="rate-item"><i class="fa fa-star" aria-hidden="true"></i></div>
+                                                                    <div class="rate-item"><i class="fa fa-star" aria-hidden="true"></i></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="form-singel">
+                                                            <textarea placeholder="Comment"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="form-singel">
+                                                            <button type="button" class="main-btn">Post Comment</button>
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- row -->
+                                            </form>
+                                        </div>
+                                    </div> <!-- reviews cont -->
+                                </div>
+                            </div> <!-- tab content -->
+                        </div>
+                    </div> <!-- corses singel left -->
+                    
+                </div>
+                <div class="col-lg-4">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-6">
+                            <div class="course-features mt-30">
+                               <h4>Course Features </h4>
+                                <ul>
+                                    <li><i class="fa fa-clock-o"></i>Duaration        : <i style="text-align:right;">XX Hours</i></li>
+                                    <li><i class="fa fa-clone"></i>Leactures          : <i style="text-align:right;">X</i></li>
+                                    <li><i class="fa fa-beer"></i>Quizzes             :  <i style="text-align:right;">X</i></li>
+                                    <li><i class="fa fa-user-o"></i>Students          :  <i style="text-align:right;">100</i></li>
+                                </ul>
+                                <div class="price-button pt-10">
+                                   
+                                    <a href="#" class="main-btn">Start Now</a>
+                                </div>
+                            </div> <!-- course features -->
+                        </div>
+                        <div class="col-lg-12 col-md-6">
+                            <div class="You-makelike mt-30">
+                                <h4>You make like </h4> 
+                             
+                                <div class="singel-makelike mt-20">
+                                    <div class="image">
+                                        <img th:src="@{../index/course_info_assests/images/your-make/y-1.jpg}" alt="Image">
+                                    </div>
+                                    <div class="cont">
+                                        <a href="#"><h4>How to build a basis game with java </h4></a>
+                                        <ul>
+                                            <li><a href="#"><i class="fa fa-user"></i>31</a></li>
+                                           
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="singel-makelike mt-20">
+                                    <div class="image">
+                                        <img th:src="@{../index/course_info_assests/images/your-make/y-1.jpg}" alt="Image">
+                                    </div>
+                                    <div class="cont">
+                                        <a href="#"><h4>Basic accounting from primary</h4></a>
+                                        <ul>
+                                            <li><a href="#"><i class="fa fa-user"></i>31</a></li>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                                 <div class="singel-makelike mt-20">
+                                    <div class="image">
+                                        <img th:src="@{../index/course_info_assests/images/your-make/y-1.jpg}" alt="Image">
+                                    </div>
+                                    <div class="cont">
+                                        <a href="#"><h4>How to build a basis game with java </h4></a>
+                                        <ul>
+                                            <li><a href="#"><i class="fa fa-user"></i>31</a></li>
+                                           
+                                        </ul>
+                                    </div>
+                                </div>
+                                   <div class="singel-makelike mt-20">
+                                    <div class="image">
+                                        <img th:src="@{../index/course_info_assests/images/your-make/y-1.jpg}" alt="Image">
+                                    </div>
+                                    <div class="cont">
+                                        <a href="#"><h4>Basic accounting from primary</h4></a>
+                                        <ul>
+                                            <li><a href="#"><i class="fa fa-user"></i>31</a></li>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- row -->
+
+        </div> <!-- container -->
+    </section>
+    
+    <!--====== COURSES SINGEl PART ENDS ======-->
+   
+    <!--====== FOOTER PART START ======-->
+    
+
+    
+    <!--====== FOOTER PART ENDS ======-->
+   
+    <!--====== BACK TO TP PART START ======-->
+    
+    <!--<a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>-->
+    
+    <!--====== BACK TO TP PART ENDS ======-->
+  
+   
+    <!--====== Map js ======-->
+ 
+    <div class="container" style="margin-top:120px;">
+        <div class="row">
+            <div class="col text-center border-right">
+                <div class="col-8 offset-2">
+                    <h4>Become an Instructor</h4>
+                    <p class="lead" style="font-size:15px;">Teach what you love! LearnIt gives you the tools to create an online course.</p>
+                    <a href="#" class="btn btn-danger btn-lg">Start Teaching</a>
+                </div>
+            </div>
+            <div class="col text-center">
+                <div class="col-8 offset-2">
+                    <a href="login2.html"> <h4>LearnIt for Business</h4></a>
+                    <p class="lead" style="font-size:15px;">Get unlimited access to 2,500 of LearnIt's top courses for your team.</p>
+                    <a href="login2.html" class="btn btn-danger btn-lg">Get LearnIt for Business</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5 border-top px-5 pt-5" style="font-size:13px;">
+        <div class="col">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="login2.html" class="nav-link text-info"><strong>LearnIt for Business</strong></a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-info"><strong>Become an Instructor</strong></a>
+                </li> 
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-info">Mobile Apps</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-info">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-info">Careers</a>
+                </li> 
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-info">Blog</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-info">Topics</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-info">Support</a>
+                </li> 
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-info">Affiliate</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col">
+            <form>
+                <div class="form-group col-7 float-right">
+                    <select class="form-control">
+                        <option><i class="fa fa-bin"></i> English</option>
+                        <option>Yoruba</option>
+                        <option>Igbo</option>
+                        <option>Hausa</option>
+                        <option>Efik</option>
+                        <option>Tiv</option>
+                    </select> 
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <nav class="nav mt-5 ml-5" style="font-size:12px;">
+            <a class="nav-link text-muted font-weight-bold">Local Home Pages:</a>
+            <a href="#" class="nav-link text-muted">English</a>
+            <a href="#" class="text-info nav-link">Deutsch</a>
+            <a href="#" class="text-info nav-link">Espanyol</a>
+            <a href="#" class="text-info nav-link">Francais</a>
+            <a href="#" class="text-info nav-link">Portuguese</a>
+            <a href="#" class="text-info nav-link">æ—¥æœ¬èªž</a>
+        </nav>
+        <hr>
+    </div>
+
+    <div class="row" style="font-size:13px">
+        <div class="col">
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link text-info" href="#">Terms</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-info" href="#">Privacy Policy and Cookie Policy</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-info" href="#">Intellectual Property</a>
+                </li> 
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+    <!-- External JavaScripts -->
+
+	<!-- All PLUGINS CSS ============================================= -->
+	<!--====== jquery js ======-->
+    <script th:src="@{../index/course_info_assests/js/vendor/modernizr-3.6.0.min.js}"></script>
+    <script th:src="@{../index/course_info_assests/js/vendor/jquery-1.12.4.min.js}"></script>
+
+    <!--====== Bootstrap js ======-->
+    <script th:src="@{../index/course_info_assests/js/bootstrap.min.js}"></script>
+    
+    <!--====== Slick js ======-->
+    <script th:src="@{../index/course_info_assests/js/slick.min.js}"></script>
+    
+    <!--====== Magnific Popup js ======-->
+    <script th:src="@{../index/course_info_assests/js/jquery.magnific-popup.min.js}"></script>
+    
+    <!--====== Counter Up js ======-->
+    <script th:src="@{../index/course_info_assests/js/waypoints.min.js}"></script>
+    <script th:src="@{../index/course_info_assests/js/jquery.counterup.min.js}"></script>
+    
+    <!--====== Nice Select js ======-->
+    <script th:src="@{../index/course_info_assests/js/jquery.nice-select.min.js}"></script>
+    
+    <!--====== Nice Number js ======-->
+    <script th:src="@{../index/course_info_assests/js/jquery.nice-number.min.js}"></script>
+    
+    <!--====== Count Down js ======-->
+    <script th:src="@{../index/course_info_assests/js/jquery.countdown.min.js}"></script>
+    
+    <!--====== Validator js ======-->
+    <script th:src="@{../index/course_info_assests/js/validator.min.js}"></script>
+    
+    <!--====== Ajax Contact js ======-->
+    <script th:src="@{../index/course_info_assests/js/ajax-contact.js}"></script>
+    
+    <!--====== Main js ======-->
+    <script th:src="@{../indedx/course_info_assests/js/main.js}"></script>
+</html>

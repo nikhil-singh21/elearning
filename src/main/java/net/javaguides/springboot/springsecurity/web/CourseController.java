@@ -160,7 +160,7 @@ public class CourseController {
 			courseservice.savecourse(course);
 	    	
 	        //return "redirect:/trainer/cresult";
-	        return "redirect:/trainer/index?success";
+			return "redirect:/trainer/index?success";
 	    }
 	    
 //	    public String registerUserAccount(@RequestParam(value = "file") MultipartFile file, HttpSession s,@ModelAttribute("newcourse") @Valid NewCourse course,

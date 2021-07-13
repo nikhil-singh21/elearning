@@ -47,8 +47,8 @@ public class sectioncontroller {
 
 
 	    @RequestMapping(path="trainer/addsection", method=RequestMethod.GET)
-	    public String addcontent( @RequestParam(value = "param1", required = false) Long cid,
-	            @RequestParam(value = "param2", required = false) Long uid, Model model) {
+	    public String addcontent( @RequestParam(value = "param1", required = true) Long cid,
+	            @RequestParam(value = "param2", required = true) Long uid,@RequestParam(value = "param3", required = false) String name, Model model) {
 		 System.out.println("cid=");
 		 System.out.println(cid);
 		    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -83,6 +83,7 @@ public class sectioncontroller {
 			 	abc.setCourse_id(cid);
 			 	
 			 	model.addAttribute("contents", abc);
+			 	model.addAttribute("name", name);
 			 	return "trainer/addsection";
 	        
 	    }
@@ -165,5 +166,6 @@ public class sectioncontroller {
 	    }
 	
 }
+
 
 
