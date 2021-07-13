@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+ <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm}" crossorigin="anonymous">
+
+     <!-- Font Awesome -->
+     <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=STIX+Two+Math&family=Staatliches&display=swap');
+</style>
+     <!-- custom stylesheet -->
+     <link rel="stylesheet" th:href="@{../css/custom.css}">
+     <link rel="stylesheet" th:href="@{../css/login.css}">
+     <link rel="stylesheet" th:href="@{../index/css/custom.css}">
+     <link rel="stylesheet" th:href="@{../index/css/login.css}">
+    <title>Add course</title>
+
+
+
+    <link rel="stylesheet" th:href="@{http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css}">
+<link th:href="@{../index/css/css1/multislider.css}" rel="stylesheet">
+<link th:href="@{../index/css/css1/slider_item.css}" rel="stylesheet">
+<link th:href="@{../index/css/css1/bootstrap.min.css}" rel="stylesheet">
+<link rel="stylesheet" type="text/css" th:href="@{https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}" />
+</head>
+
+
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto container-fluid">
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-list-ul"></i>
+                        Categories
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+
+                <li class="nav-item col-8">
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control form-control-lg col-9 bg-light border-0 rounded-radius-left" type="search" placeholder="Search for Courses" aria-label="Search">
+                        <button class="btn btn-lg btn-light col-2 my-2 my-sm-0 ml-0 rounded-radius-right" type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </li>
+            </ul>
+
+            <!-- <a class="btn btn-light mx-2" th:href="@{#}" data-toggle="popover" data-trigger="focus" data-content="Get your team access to LearnIt's top 2,500 courses anytime, anywhere" title="Try LearnIt for Business" data-placement="bottom" href="#">LearnIt for Business</a> -->
+            <!--  <a class="btn btn-light mx-2" th:href="@{#}">Become an Instructor</a> -->
+            <!--  <a class="btn btn-light mx-2 rounded-circle" th:href="@{#}"><i class="fa fa-shopping-cart"></i></a>-->
+            <a class="btn btn-danger mx-1" th:href="@{/}">logout</a>
+            
+
+           
+        </div>
+    </nav>
+
+    <br>
+    <br>
+
+    <div class="container" center>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+
+                
+
+                <h1> Course Registration</h1>
+                
+                <form th:action="@{/trainer/register}" enctype="multipart/form-data" th:object="${newcourse}" method="post">
+
+                    
+                    <div class="form-group" th:classappend="${#fields.hasErrors('Course_name')}? 'has-error':''">
+                        <label for="Course_name" class="control-label">Course name</label> 
+                        
+                        <input id="text" class="form-control" th:field="*{Course_name}" />
+ 				<p class="error-message" th:each="error : ${#fields.errors('Course_name')}" th:text="${error}">Validation error
+                        </p>
+                    </div>
+                    
+                    <div class="form-group" th:classappend="${#fields.hasErrors('Category')}? 'has-error':''">
+                        <label for="Category" class="control-label">Category</label> 
+                        
+                        <input id="text" class="form-control" th:field="*{Category}" />
+ 				<p class="error-message" th:each="error : ${#fields.errors('Category')}" th:text="${error}">Validation error
+                        </p>
+                    </div>
+                    
+                    
+                     <div class="form-group" th:classappend="${#fields.hasErrors('description')}? 'has-error':''">
+                        <label for="description" class="control-label">description</label> 
+                        
+                        <input id="text" class="form-control" th:field="*{description}" />
+ 				<p class="error-message" th:each="error : ${#fields.errors('description')}" th:text="${error}">Validation error
+                        </p>
+                    </div>
+                    
+                    
+                      <div class="form-group" th:classappend="${#fields.hasErrors('User_name')}? 'has-error':''">
+                        <label for="User_name" class="control-label">User_name</label> 
+                        <input id="text" class="form-control" th:field="*{User_name}" />
+ 				<p class="error-message" th:each="error : ${#fields.errors('User_name')}" th:text="${error}">Validation error
+                        </p>
+                    </div>
+                    
+                    <div class="form-group" th:classappend="${#fields.hasErrors('image')}? 'has-error':''">
+                        <label for="vedio" class="control-label">vedio</label> 
+                        <input type="file"  name= "file" class="form-control"/>
+ 						<p class="error-message" th:each="error : ${#fields.errors('image')}" th:text="${error}">Validation error
+                        </p>
+                    </div> 
+                    
+       
+        
+        <p><input type="submit" value="Submit"  class="btn btn-primary"/>   <input type="reset" value="Reset"  class="btn btn-primary" /></p>
+        
+                    
+                    
+                    
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+</body>
+  <div class="row mt-5 border-top px-5 pt-5" style="font-size:13px;">
+        <div class="col">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="login2.html" class="nav-link text-info"><strong>LearnIt for Business</strong></a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-info"><strong>Become an Instructor</strong></a>
+                </li> 
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-info">Mobile Apps</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-info">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-info">Careers</a>
+                </li> 
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-info">Blog</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-info">Topics</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-info">Support</a>
+                </li> 
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-info">Affiliate</a>
+                </li>
+            </ul>
+        </div>
+
+      
+    </div>
+
+    <div>
+        <nav class="nav mt-5 ml-5" style="font-size:12px;">
+            <a class="nav-link text-muted font-weight-bold">Local Home Pages:</a>
+            <a href="#" class="nav-link text-muted">English</a>
+            <a href="#" class="text-info nav-link">Deutsch</a>
+            <a href="#" class="text-info nav-link">Espanyol</a>
+            <a href="#" class="text-info nav-link">Francais</a>
+            <a href="#" class="text-info nav-link">Portuguese</a>
+            <a href="#" class="text-info nav-link">æ—¥æœ¬èªž</a>
+        </nav>
+        <hr>
+    </div>
+
+    <div class="row" style="font-size:13px">
+        <div class="col">
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link text-info" href="#">Terms</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-info" href="#">Privacy Policy and Cookie Policy</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-info" href="#">Intellectual Property</a>
+                </li> 
+            </ul>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  
+    <!-- initialize popover library -->
+    
+
+
+
+
+
+ <script src="js/js1/bootstrap.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+   <script src="js/js1/multislider.min.js"></script>
+   <script src="js/js1/custom.js"></script>
+   
+    
+
+
+  <script>
+   
+ 
+</html>

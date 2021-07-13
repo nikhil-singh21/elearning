@@ -69,7 +69,7 @@ public class contentcontroller {
 	    
 	    @RequestMapping(path="trainer/addcontent", method=RequestMethod.GET)
 	    public String addcontent( @RequestParam(value = "param1", required = false) Long sid,
-	            @RequestParam(value = "param2", required = false) Long uid, Model model) {
+	            @RequestParam(value = "param2", required = false) Long uid, @RequestParam(value = "param3", required = false) Long cid, Model model) {
 		 
 	    	Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			 String username;
@@ -96,10 +96,13 @@ public class contentcontroller {
 		 System.out.println(sid);
 		 model.addAttribute("uid",uid);
 		 model.addAttribute("sid",sid);
+		 model.addAttribute("cid",cid);
 		 
 		 net.javaguides.springboot.springsecurity.model.Content abc = new Content();
 		 abc.setUser_id(uid);
 		 abc.setSection_id(sid);
+		 
+		 abc.setCourse_id(cid);
 		 model.addAttribute("contents", abc);
 		 
 	        return "trainer/addcontent";
@@ -223,8 +226,10 @@ public class contentcontroller {
 				System.out.println("Failed to create directory!");
 			}
 	    	content.savecourse(course);
-	    	
-	        return "redirect:/trainer/cresult";
+	    	course.getSection_id();
+	    	course.getUser_id();
+	    	course.getCourse_id();
+	    	return "redirect:/trainer/section?param1="+course.getCourse_id()+"&param2="+course.getUser_id()+"&success";
 	    }
 	
 }

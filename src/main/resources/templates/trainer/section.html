@@ -164,6 +164,7 @@
 </body>
  -->
  <body class="bg-light">
+ 
   <nav class="navbar navbar-expand-lg navbar-light bg-white">
 
   <button class="navbar-toggler navbar-toggler-icon" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -302,6 +303,10 @@
         </div>
     </nav>
     
+    <div th:if="${param.success}">
+                    <div class="alert alert-info">You've successfully added to a course!</div>
+                </div>
+    
     <section id="page-banner" class="pt-105 pb-110 bg_cover" data-overlay="8" style="background-image: url(images/page-banner-2.jpg)">
         <div class="container">
             <div class="row">
@@ -431,7 +436,7 @@
                                                 <div th:id="${contentlist.section_name}" class="collapse" th:aria-labelledby="${contentlist.section_name}+'a'" data-parent="#accordionExample">
                                                     <div class="card-body">
                                                     <div:block class="error" th:if="${id == uid}">
-                                                    <a th:href="@{/trainer/addcontent(param1=${contentlist.section_id},param2=${uid})}" class="btn btn-primary" >Add Content</a>
+                                                    <a th:href="@{/trainer/addcontent(param1=${contentlist.section_id},param2=${uid},param3=${contentlist.course_id})}" class="btn btn-primary" >Add Content</a>
                                                     </div:block>
                                                             <th:block th:each="content: ${content}">
             															<div class="error" th:if="${contentlist.section_id == content.section_id}" >
